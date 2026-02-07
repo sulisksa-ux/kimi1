@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زيت زيتون بكر ممتاز - مجموعة الغذاء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #22C55E;
+            --primary-light: #86EFAC;
+            --primary-dark: #166534;
+            --secondary: #3B82F6;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --dark: #0F172A;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--gray-900);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 48px 14px 24px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .cart-btn {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--danger);
+            color: var(--white);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .breadcrumb a {
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        /* Product Section */
+        .product-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .main-image {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .thumbnail-list {
+            display: flex;
+            gap: 12px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .thumbnail.active, .thumbnail:hover {
+            border-color: var(--primary);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stars {
+            color: var(--accent);
+        }
+
+        .product-price-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .price-current {
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .price-original {
+            font-size: 18px;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .discount-badge {
+            background: var(--white);
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .group-info {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .group-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .group-status {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .progress-section {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-large {
+            height: 12px;
+            background: var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .progress-fill-large {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 6px;
+            transition: width 0.5s;
+            width: 75%;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .timer-box {
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .timer-item {
+            text-align: center;
+        }
+
+        .timer-value {
+            width: 56px;
+            height: 56px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gray-900);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 4px;
+        }
+
+        .quantity-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .qty-btn {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--gray-300);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--gray-700);
+            transition: all 0.3s;
+        }
+
+        .qty-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .qty-input {
+            width: 80px;
+            height: 48px;
+            text-align: center;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-family: 'Cairo', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 18px 32px;
+            border-radius: var(--radius-md);
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .product-gallery {
+                position: relative;
+                top: 0;
+            }
+
+            .main-image img {
+                height: 400px;
+            }
+
+            .product-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .timer-display {
+                gap: 8px;
+            }
+
+            .timer-value {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-main">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <span class="logo-text">مجموعة الغذاء</span>
+            </a>
+
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن منتجات...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <a href="cart.html" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="index.html">الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="categories.html">الفئات</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="#">زيوت طبيعية</a>
+        <i class="fas fa-chevron-left"></i>
+        <span>زيت زيتون بكر ممتاز</span>
+    </nav>
+
+    <section class="product-section">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&h=600&fit=crop" alt="Olive Oil" id="mainImage">
+            </div>
+            <div class="thumbnail-list">
+                <div class="thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&h=600&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=150&h=150&fit=crop" alt="Olive Oil 1">
+                </div>
+                <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&h=600&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=150&h=150&fit=crop" alt="Olive Oil 2">
+                </div>
+                <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1599228918130-7c8428a6c4c0?w=800&h=600&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1599228918130-7c8428a6c4c0?w=150&h=150&fit=crop" alt="Olive Oil 3">
+                </div>
+                <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=800&h=600&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=150&h=150&fit=crop" alt="Olive Oil 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-category">زيوت طبيعية</div>
+            <h1 class="product-title">زيت زيتون بكر ممتاز - عبوة 5 لتر</h1>
+            
+            <div class="product-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>4.8 (256 تقييم) | 1,200+ طلب</span>
+            </div>
+
+            <div class="product-price-box">
+                <div class="price-content">
+                    <span class="price-label">سعر الشراء الجماعي</span>
+                    <span class="price-current">117 ريال</span>
+                    <span class="price-original">180 ريال</span>
+                </div>
+                <div class="discount-badge">خصم 35%</div>
+            </div>
+
+            <div class="group-info">
+                <div class="group-header">
+                    <div class="group-title">
+                        <i class="fas fa-users" style="color: var(--primary);"></i>
+                        حالة المجموعة
+                    </div>
+                    <span class="group-status">نشطة</span>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-bar-large">
+                        <div class="progress-fill-large" id="progressBar"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span><strong id="currentMembers">75</strong> مشترك</span>
+                        <span>الهدف: <strong>100</strong></span>
+                        <span>متبقي: <strong id="remaining">25</strong></span>
+                    </div>
+                </div>
+
+                <div class="timer-box">
+                    <div style="font-size: 13px; color: var(--gray-500); margin-bottom: 8px;">⏰ الوقت المتبقي لإغلاق المجموعة</div>
+                    <div class="timer-display">
+                        <div class="timer-item">
+                            <div class="timer-value" id="hours">18</div>
+                            <div style="font-size: 12px; color: var(--gray-500);">ساعة</div>
+                        </div>
+                        <div class="timer-item">
+                            <div class="timer-value" id="minutes">45</div>
+                            <div style="font-size: 12px; color: var(--gray-500);">دقيقة</div>
+                        </div>
+                        <div class="timer-item">
+                            <div class="timer-value" id="seconds">30</div>
+                            <div style="font-size: 12px; color: var(--gray-500);">ثانية</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity-section">
+                <label style="font-weight: 700; margin-bottom: 12px; display: block;">الكمية:</label>
+                <div class="quantity-selector">
+                    <button class="qty-btn" onclick="updateQuantity(-1)">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" max="10" id="quantity" readonly>
+                    <button class="qty-btn" onclick="updateQuantity(1)">+</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--gray-200);">
+                    <span style="color: var(--gray-600);">الإجمالي:</span>
+                    <span style="font-size: 24px; font-weight: 800; color: var(--primary);" id="totalPrice">117 ريال</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="joinGroup()">
+                    <i class="fas fa-users"></i>
+                    انضم للمجموعة الآن
+                </button>
+                <button class="btn btn-outline" onclick="addToCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    أضف للسلة
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const pricePerUnit = 117;
+        let quantity = 1;
+
+        function changeImage(thumbnail, src) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function updateQuantity(change) {
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            if (quantity > 10) quantity = 10;
+            
+            document.getElementById('quantity').value = quantity;
+            document.getElementById('totalPrice').textContent = (quantity * pricePerUnit) + ' ريال';
+        }
+
+        function updateTimer() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const diff = endOfDay - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        function joinGroup() {
+            const btn = event.currentTarget;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الانضمام...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> تم الانضمام!';
+                btn.style.background = 'var(--primary-dark)';
+                
+                let current = parseInt(document.getElementById('currentMembers').textContent);
+                document.getElementById('currentMembers').textContent = current + 1;
+                document.getElementById('remaining').textContent = 100 - (current + 1);
+                document.getElementById('progressBar').style.width = (current + 1) + '%';
+                
+                alert('تم انضمامك للمجموعة بنجاح!');
+            }, 1500);
+        }
+
+        function addToCart() {
+            alert('تمت إضافة المنتج إلى السلة');
+        }
+    </script>
+</body>
+</html>
