@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة الغذاء - شراء جماعي للمنتجات الطازجة</title>
+    <meta name="description" content="منصة الشراء الجماعي الأولى للمنتجات الغذائية الطازجة في المملكة العربية السعودية">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Page-specific styles */
+        .hero-image img {
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div>
+                    <i class="fas fa-truck"></i>
+                    توصيل مجاني للطلبات أكثر من 200 ريال
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    9200XXXXX
+                </div>
+            </div>
+        </div>
+        
+        <div class="container header-main">
+            <button class="mobile-menu-btn" aria-label="القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <span class="logo-text">مجموعة الغذاء</span>
+            </a>
+
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن منتجات، فئات، أو علامات تجارية..." aria-label="البحث">
+                <button type="button" aria-label="بحث">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <a href="account.html" class="header-btn header-btn-outline">
+                    <i class="fas fa-user"></i>
+                    <span class="hide-mobile">حسابي</span>
+                </a>
+                <a href="cart.html" class="cart-btn" aria-label="السلة">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+        
+        <nav class="nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">الرئيسية</a></li>
+                    <li><a href="categories.html" class="nav-link">الفئات</a></li>
+                    <li><a href="#deals" class="nav-link">العروض اليومية</a></li>
+                    <li><a href="account.html#groups" class="nav-link">مجموعاتي</a></li>
+                    <li><a href="account.html#orders" class="nav-link">طلباتي</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text animate-fadeInUp">
+                <h1>وفر أكثر مع <span>الشراء الجماعي</span></h1>
+                <p>انضم إلى آلاف العائلات التي توفر حتى 50% على مشترياتها الغذائية من خلال الشراء الجماعي المباشر من المزارع والمصنعين</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="50000">0</div>
+                        <div class="hero-stat-label">عميل نشط</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="200">0</div>
+                        <div class="hero-stat-label">منتج طازج</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="40">0</div>
+                        <div class="hero-stat-label">% متوسط التوفير</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#deals" class="btn btn-white btn-lg">
+                        <i class="fas fa-fire"></i>
+                        اكتشف العروض
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline-white btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                        كيف يعمل؟
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image animate-fadeInUp">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop" 
+                     alt="منتجات غذائية طازجة" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">تصفح حسب <span>الفئة</span></h2>
+                <a href="categories.html" class="view-all">
+                    عرض الكل
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            
+            <div class="categories-grid">
+                <a href="categories.html?cat=vegetables" class="category-card">
+                    <div class="category-icon">🥬</div>
+                    <div class="category-name">خضروات طازجة</div>
+                    <div class="category-count">+120 منتج</div>
+                </a>
+                
+                <a href="categories.html?cat=fruits" class="category-card">
+                    <div class="category-icon">🍎</div>
+                    <div class="category-name">فواكه موسمية</div>
+                    <div class="category-count">+85 منتج</div>
+                </a>
+                
+                <a href="categories.html?cat=meat" class="category-card">
+                    <div class="category-icon">🥩</div>
+                    <div class="category-name">لحوم ودواجن</div>
+                    <div class="category-count">+45 منتج</div>
+                </a>
+                
+                <a href="categories.html?cat=dairy" class="category-card">
+                    <div class="category-icon">🥛</div>
+                    <div class="category-name">ألبان وأجبان</div>
+                    <div class="category-count">+60 منتج</div>
+                </a>
+                
+                <a href="categories.html?cat=bakery" class="category-card">
+                    <div class="category-icon">🍞</div>
+                    <div class="category-name">مخبوزات</div>
+                    <div class="category-count">+35 منتج</div>
+                </a>
+                
+                <a href="categories.html?cat=organic" class="category-card">
+                    <div class="category-icon">🍯</div>
+                    <div class="category-name">منتجات عضوية</div>
+                    <div class="category-count">+90 منتج</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section class="section deals-section" id="deals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">عروض <span>الشراء الجماعي</span> النشطة</h2>
+                <a href="#" class="view-all">
+                    عرض الكل
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            
+            <div class="deals-grid">
+                <!-- Deal 1 -->
+                <div class="deal-card">
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=300&fit=crop" 
+                             alt="زيت زيتون" loading="lazy">
+                        <span class="deal-badge">خصم 35%</span>
+                        <div class="deal-timer">
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="hours">18</span>
+                                <span class="timer-label">ساعة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="minutes">45</span>
+                                <span class="timer-label">دقيقة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="seconds">30</span>
+                                <span class="timer-label">ثانية</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-category">زيوت طبيعية</div>
+                        <h3 class="deal-title">زيت زيتون بكر ممتاز - عبوة 5 لتر</h3>
+                        <div class="deal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>75 مشترك من 100</span>
+                                <span>25 متبقي</span>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="deal-price">
+                                <span class="price-old">180 ريال</span>
+                                <span class="price-new">117 ريال</span>
+                            </div>
+                            <button class="btn-add" data-product-id="1" aria-label="إضافة للسلة">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 2 -->
+                <div class="deal-card">
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop" 
+                             alt="تفاح" loading="lazy">
+                        <span class="deal-badge">خصم 40%</span>
+                        <div class="deal-timer">
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="hours">12</span>
+                                <span class="timer-label">ساعة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="minutes">30</span>
+                                <span class="timer-label">دقيقة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="seconds">15</span>
+                                <span class="timer-label">ثانية</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-category">فواكه موسمية</div>
+                        <h3 class="deal-title">تفاح أحمر طازج - كرتونة 10 كجم</h3>
+                        <div class="deal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>60 مشترك من 100</span>
+                                <span>40 متبقي</span>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="deal-price">
+                                <span class="price-old">120 ريال</span>
+                                <span class="price-new">72 ريال</span>
+                            </div>
+                            <button class="btn-add" data-product-id="2" aria-label="إضافة للسلة">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 3 -->
+                <div class="deal-card">
+                    <div class="deal-image">
+                        <img src="https://images.unsplash.com/photo-1587593810167-a84920ea0782?w=400&h=300&fit=crop" 
+                             alt="أرز" loading="lazy">
+                        <span class="deal-badge">خصم 25%</span>
+                        <div class="deal-timer">
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="hours">24</span>
+                                <span class="timer-label">ساعة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="minutes">00</span>
+                                <span class="timer-label">دقيقة</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="timer-value" data-unit="seconds">00</span>
+                                <span class="timer-label">ثانية</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-category">بقوليات وأرز</div>
+                        <h3 class="deal-title">أرز بسمتي هندي - شيكارة 10 كجم</h3>
+                        <div class="deal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>90 مشترك من 100</span>
+                                <span>10 متبقي فقط!</span>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="deal-price">
+                                <span class="price-old">200 ريال</span>
+                                <span class="price-new">150 ريال</span>
+                            </div>
+                            <button class="btn-add" data-product-id="3" aria-label="إضافة للسلة">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">كيف يعمل <span>الشراء الجماعي</span>؟</h2>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">اختر المنتج</h3>
+                    <p class="step-desc">تصفح العروض اليومية واختر المنتجات التي تحتاجها بأفضل الأسعار</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">انضم للمجموعة</h3>
+                    <p class="step-desc">انضم إلى مجموعة الشراء واستفد من سعر الجملة مع الآخرين</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">استلم طلبك</h3>
+                    <p class="step-desc">سنقوم بتوصيل طلبك إلى باب منزلك فور اكتمال المجموعة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-center">لماذا <span>مجموعة الغذاء</span>؟</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="feature-title">وفر حتى 50%</h3>
+                    <p class="feature-desc">اشترِ مباشرة من المزارع والمصنعين بدون وسطاء ووفر المزيد من المال</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">منتجات طازجة</h3>
+                    <p class="feature-desc">نضمن وصول المنتجات من المزرعة إلى منزلك في أقل من 24 ساعة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">مجتمع نابض</h3>
+                    <p class="feature-desc">انضم إلى مجتمع من العائلات التي تهتم بالجودة والتوفير</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="feature-title">توصيل سريع</h3>
+                    <p class="feature-desc">توصيل مجاني للطلبات أكثر من 200 ريال مع إمكانية التتبع المباشر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-shopping-basket"></i>
+                        </div>
+                        <span class="logo-text">مجموعة الغذاء</span>
+                    </a>
+                    <p class="footer-desc">
+                        منصة الشراء الجماعي الأولى في المملكة، نوفر منتجات غذائية طازجة مباشرة من المزارع والمصنعين إلى منزلك بأفضل الأسعار.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="تويتر">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="انستغرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="يوتيوب">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">من نحن</a></li>
+                        <li class="footer-link"><a href="#how-it-works">كيف يعمل</a></li>
+                        <li class="footer-link"><a href="categories.html">الفئات</a></li>
+                        <li class="footer-link"><a href="#deals">العروض</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">خدمة العملاء</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">تواصل معنا</a></li>
+                        <li class="footer-link"><a href="#">الأسئلة الشائعة</a></li>
+                        <li class="footer-link"><a href="#">الشحن والتوصيل</a></li>
+                        <li class="footer-link"><a href="#">سياسة الإرجاع</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">تواصل معنا</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="tel:9200XXXXX">
+                                <i class="fas fa-phone"></i> 9200XXXXX
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="mailto:info@foodgroup.com">
+                                <i class="fas fa-envelope"></i> info@foodgroup.com
+                            </a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="#">
+                                <i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 مجموعة الغذاء. جميع الحقوق محفوظة.</p>
+                <div>
+                    <a href="#" style="color: var(--gray-400); margin-left: 24px;">سياسة الخصوصية</a>
+                    <a href="#" style="color: var(--gray-400);">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Page-specific JavaScript -->
+    <script>
+        // Animate numbers on scroll
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.hero-stat-number[data-count]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const count = parseInt(target.dataset.count);
+                        animateValue(target, 0, count, 2000);
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            numbers.forEach(num => observer.observe(num));
+        }
+        
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = value.toLocaleString('ar-SA') + (obj.dataset.count === '40' ? '' : '+');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', animateNumbers);
+    </script>
+</body>
+</html>
