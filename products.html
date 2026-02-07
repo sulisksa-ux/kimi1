@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنتجات - مجموعة الغذاء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #22C55E;
+            --primary-light: #86EFAC;
+            --primary-dark: #166534;
+            --secondary: #3B82F6;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --dark: #0F172A;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--white);
+            border-left: 1px solid var(--gray-200);
+            padding: 24px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .sidebar-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .sidebar-logo-text {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .menu-category {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            margin: 24px 0 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item {
+            margin-bottom: 4px;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--gray-600);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--primary);
+        }
+
+        .menu-link i {
+            width: 24px;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 32px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .btn-primary {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .filters-bar {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filter-select {
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            background: var(--white);
+            min-width: 150px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .badge-active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .badge-inactive {
+            background: var(--gray-400);
+            color: var(--white);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: var(--gray-400);
+            text-decoration: line-through;
+        }
+
+        .product-stock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .stock-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .stock-high {
+            background: var(--primary);
+        }
+
+        .stock-low {
+            background: var(--accent);
+        }
+
+        .stock-out {
+            background: var(--danger);
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-action:hover {
+            background: var(--gray-100);
+        }
+
+        .btn-action.edit {
+            color: var(--secondary);
+        }
+
+        .btn-action.delete {
+            color: var(--danger);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 1024px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <span class="sidebar-logo-text">مجموعة الغذاء</span>
+            </div>
+
+            <nav>
+                <div class="menu-category">الرئيسية</div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item">
+                        <a href="dashboard.html" class="menu-link">
+                            <i class="fas fa-home"></i>
+                            لوحة التحكم
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="menu-category">الإدارة</div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item">
+                        <a href="products.html" class="menu-link active">
+                            <i class="fas fa-box"></i>
+                            المنتجات
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="orders.html" class="menu-link">
+                            <i class="fas fa-shopping-bag"></i>
+                            الطلبات
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="groups.html" class="menu-link">
+                            <i class="fas fa-users"></i>
+                            المجموعات
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="inventory.html" class="menu-link">
+                            <i class="fas fa-warehouse"></i>
+                            المخزون
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="suppliers.html" class="menu-link">
+                            <i class="fas fa-truck"></i>
+                            الموردين
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <h1 class="page-title">إدارة المنتجات</h1>
+                <a href="product-add.html" class="btn-primary">
+                    <i class="fas fa-plus"></i>
+                    إضافة منتج جديد
+                </a>
+            </div>
+
+            <div class="filters-bar">
+                <input type="text" class="search-input" placeholder="البحث في المنتجات...">
+                <select class="filter-select">
+                    <option value="">جميع الفئات</option>
+                    <option value="vegetables">خضروات</option>
+                    <option value="fruits">فواكه</option>
+                    <option value="meat">لحوم</option>
+                    <option value="dairy">ألبان</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">جميع الحالات</option>
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">ترتيب حسب</option>
+                    <option value="newest">الأحدث</option>
+                    <option value="price-low">السعر: منخفض إلى مرتفع</option>
+                    <option value="price-high">السعر: مرتفع إلى منخفض</option>
+                </select>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=300&fit=crop" alt="Olive Oil">
+                        <span class="product-badge badge-active">نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">زيوت طبيعية</div>
+                        <h3 class="product-name">زيت زيتون بكر ممتاز - عبوة 5 لتر</h3>
+                        <div class="product-price">
+                            <span class="current-price">117 ريال</span>
+                            <span class="original-price">180 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-high"></span>
+                            <span>المخزون: 250 وحدة</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop" alt="Apples">
+                        <span class="product-badge badge-active">نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">فواكه موسمية</div>
+                        <h3 class="product-name">تفاح أحمر طازج - كرتونة 10 كجم</h3>
+                        <div class="product-price">
+                            <span class="current-price">72 ريال</span>
+                            <span class="original-price">120 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-low"></span>
+                            <span>المخزون: 15 وحدة</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587593810167-a84920ea0782?w=400&h=300&fit=crop" alt="Rice">
+                        <span class="product-badge badge-active">نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">بقوليات وأرز</div>
+                        <h3 class="product-name">أرز بسمتي هندي - شيكارة 10 كجم</h3>
+                        <div class="product-price">
+                            <span class="current-price">150 ريال</span>
+                            <span class="original-price">200 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-high"></span>
+                            <span>المخزون: 500 وحدة</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=300&fit=crop" alt="Olive Oil 2L">
+                        <span class="product-badge badge-inactive">غير نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">زيوت طبيعية</div>
+                        <h3 class="product-name">زيت زيتون - عبوة 2 لتر</h3>
+                        <div class="product-price">
+                            <span class="current-price">55 ريال</span>
+                            <span class="original-price">85 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-out"></span>
+                            <span>نفذت الكمية</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1599228918130-7c8428a6c4c0?w=400&h=300&fit=crop" alt="Olive Oil 3L">
+                        <span class="product-badge badge-active">نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">زيوت طبيعية</div>
+                        <h3 class="product-name">زيت زيتون - عبوة 3 لتر</h3>
+                        <div class="product-price">
+                            <span class="current-price">78 ريال</span>
+                            <span class="original-price">120 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-high"></span>
+                            <span>المخزون: 180 وحدة</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=400&h=300&fit=crop" alt="Premium Olive Oil">
+                        <span class="product-badge badge-active">نشط</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">زيوت طبيعية</div>
+                        <h3 class="product-name">زيت زيتون عضوي فاخر - عبوة 1 لتر</h3>
+                        <div class="product-price">
+                            <span class="current-price">145 ريال</span>
+                            <span class="original-price">220 ريال</span>
+                        </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator stock-high"></span>
+                            <span>المخزون: 95 وحدة</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action edit">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn-action delete">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
